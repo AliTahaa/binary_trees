@@ -2,11 +2,11 @@
 
 /**
  * binary_tree_height - Function that measures the height of a binary tree
- * @tree: tree to go through
+ * @tree: the tree
  * Return: the height
  */
 
-size_t binary_tree_height(const binary_tree_t *tree)
+size_t binary_tree_height_a(const binary_tree_t *tree)
 {
 	size_t left = 0;
 	size_t right = 0;
@@ -19,17 +19,17 @@ size_t binary_tree_height(const binary_tree_t *tree)
 	{
 		if (tree)
 		{
-			left = tree->left ? 1 + binary_tree_height(tree->left) : 0;
-			right = tree->right ? 1 + binary_tree_height(tree->right) : 0;
+			left = tree->left ? 1 + binary_tree_height_a(tree->left) : 0;
+			right = tree->right ? 1 + binary_tree_height_a(tree->right) : 0;
 		}
 		return ((left > right) ? left : right);
 	}
 }
 
 /**
- * binary_tree_balance - measures the balance factor of a binary tree
+ * binary_tree_balance - Measures balance factor of a binary tree
  * @tree: the tree
- * Return: the balanced factor
+ * Return: balanced factor
  */
 
 int binary_tree_balance(const binary_tree_t *tree)
@@ -38,8 +38,8 @@ int binary_tree_balance(const binary_tree_t *tree)
 
 	if (tree)
 	{
-		left = ((int)binary_tree_height(tree->left));
-		right = ((int)binary_tree_height(tree->right));
+		left = ((int)binary_tree_height_a(tree->left));
+		right = ((int)binary_tree_height_a(tree->right));
 		total = left - right;
 	}
 	return (total);
